@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Level Week 04 da Rocketseat
 
-## Getting Started
+Desenvolvido uma aplicação com a temática da técnica Pomodoro para melhorar a concentração e realizar alongamentos enquanto fica na frente do computador. Nele foi utilizado uma estratégia de gamificação na qual o usuário obtém pontos ao realizar tarefas que se apresentam quando é o momento de descanso. 
 
-First, run the development server:
+*obs: a técnica Pomodoro consiste em se focar em uma tarefa por um determinado tempo e então ter um intervalo para descansar e depois voltar para a tarefa com menos tempo, e ficar nesse loop.*
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Ambiente de desenvolvimento
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Node versão LTS ou mais;
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Utilizado
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- React com Typescript
+- Next.js
 
-## Learn More
+## Dia 01
 
-To learn more about Next.js, take a look at the following resources:
+- Visto: 
+  - Funcionamento do React: componentes, estados;
+  - Typescript: tipagem estática, novas features para turbinar o JS;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Desenvolvido: 
+  - barra de xp do layout
+  - CSS com variáveis globais na `:root`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Dia 02
 
-## Deploy on Vercel
+- Visto: 
+  - Next.js
+    - Framework para React.
+    - **Single Page Application (SPA)**: aplicação de uma página, não atualiza a página inteira;
+    - **Server Side Rendering (SSR)**: a aplicação tem sua renderização no servidor, assim, entregando html e css para o client;
+    - **Static Side Generation (SSG)**: HTML, CSS, JS puro, gera uma página estática dentro do servidor que entrega ele para vários clients a mesma página, e após um tempo determinado atualiza a página no server assim, entregando a página nova para todos novamente.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  - **CSS modules**: o next ajuda no css isolando os nomes das classes, assim podendo duplicar nomes em outros componentes. Para isso, é necessário um arquivo `nome_arquivo.module.css` e realizar a importação dele no componente, assim, na tag passar `className={ nome_importacao.nome_ClasseCSS }` 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Desenvolvido: 
+  - Migração para o Next.js
+    - passado as pastas components e styles
+
+  - Criado o arquivo `_document.tsx`, nele foi adicionado as tags do head do HTML (não foi adicionado no `_app.tsx` pois nele é recalculado e isso pode carregar os scripts de fontes do google mais d uma vez)
+    - *obs*: 
+      - ele carrega apenas uma vez quando o uauário acessa a página.
+      - colocar tudo o que for estático
+  
+  - Criado componente Countdown, Profile e CompletedChallenges
