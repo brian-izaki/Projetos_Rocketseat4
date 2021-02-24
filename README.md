@@ -32,7 +32,7 @@ Desenvolvido uma aplicação com a temática da técnica Pomodoro para melhorar 
     - Framework para React.
     - **Single Page Application (SPA)**: aplicação de uma página, não atualiza a página inteira;
     - **Server Side Rendering (SSR)**: a aplicação tem sua renderização no servidor, assim, entregando html e css para o client;
-    - **Static Side Generation (SSG)**: HTML, CSS, JS puro, gera uma página estática dentro do servidor que entrega ele para vários clients a mesma página, e após um tempo determinado atualiza a página no server assim, entregando a página nova para todos novamente.
+    - **Static Site Generation (SSG)**: HTML, CSS, JS puro, gera uma página estática dentro do servidor que entrega ele para vários *clients* a mesma página, e após um tempo determinado atualiza a página no server assim, entregando a página nova para todos novamente.
 
   - **CSS modules**: o next ajuda no css isolando os nomes das classes, assim podendo duplicar nomes em outros componentes. Para isso, é necessário um arquivo `nome_arquivo.module.css` e realizar a importação dele no componente, assim, na tag passar `className={ nome_importacao.nome_ClasseCSS }` 
 
@@ -46,3 +46,21 @@ Desenvolvido uma aplicação com a temática da técnica Pomodoro para melhorar 
       - colocar tudo o que for estático
   
   - Criado componente Countdown, Profile e CompletedChallenges
+
+## Dia 03
+  - Visto:
+    - **Context Hook**: Formas de compartilhar comunicação entre vários componentes na aplicação.
+      - Para utilizar ele é necessário importar o `useContext()` do React, dentro pode ser passado qualquer coisa (string, number, objetos, etc)
+      - Uma variável com o `useContext` pode ser utilizada como um componente;
+      - Para passar os valores de um contexto é necessário extender com o `.Provider` e passar os valores ao atributo `value={valores_desejados}`
+      - ```JavaScript
+        // EXEMPLO
+        const Contexto = useContext({})
+        <Contexto.Provider value={{valor1: 1, valor2: 2}}>
+          <Componentes_que_podem_user_esse_contexto>
+        </Contexto.Provider>
+        ```
+
+  - Feito:
+    - Regras de negócio para aparecer os desafios e xp de usuários;
+    - utilizado o `useContext` para gerenciar os estados entre os componentes;
