@@ -64,3 +64,17 @@ Desenvolvido uma aplicação com a temática da técnica Pomodoro para melhorar 
   - Feito:
     - Regras de negócio para aparecer os desafios e xp de usuários;
     - utilizado o `useContext` para gerenciar os estados entre os componentes;
+
+## Dia 04
+  - Visto:
+    - Quando perceber que é necessário utilizar uma variável ou função de determinado componente, é interessante pensar em criar um novo contexto.
+    - O contexto depende para qual funcionalidade será utilizada, algumas vezes um contexto não será utilizado na aplicação toda, assim, podendo colocar ele em uma parte específica do código que fará uso dele (ex: o `CountdownProvider` não tinha necessidade de estar no `_app.tsx`, logo, ele foi colocado apenas na prágina `index.tsx`)
+      - (*obs: caso faça uso de dois contextos deve pensar qual fará uso de qual, uma que não faz uso de nenhuma está no topo da hierarquia, uma que faz uso de "A" estará abaixo dela, assim em diante* ) 
+    - `Notification` é uma [API nativa do browser](https://developer.mozilla.org/pt-BR/docs/Web/API/notificacoes), assim como no nome, ele envia notificações (antes é necessário que o usuário conceda permissão)
+      - (*obs: ele ainda [não é suportado](https://caniuse.com/mdn-api_notification) em todos os browsers*)
+    - `Audio` outra [API nativa do browser](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio), com ele é possível tocar uma música. [ele tem amplo suporte](https://caniuse.com/mdn-api_htmlaudioelement_audio)
+
+
+  - Feito:
+    - Separado a lógica do Countdown para criar um novo context, pois algumas das informações dele eram necessárias no ChallengeBox
+    - 
