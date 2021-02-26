@@ -24,7 +24,7 @@ export const CountdownContext = createContext({} as CountdownContextData);
 
 // tipagem nativa do js
 let countdownTimeout: NodeJS.Timeout;
-const INITIAL_TIME = 0.05 * 60
+const INITIAL_TIME = 25 * 60
 
 export function CountdownProvider({ children }: CountdownProvider) {
   const { startNewChallenge } = useContext(ChallengesContext);
