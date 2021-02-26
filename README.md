@@ -8,12 +8,28 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um determinado 
 
 ## Ambiente de desenvolvimento
 
-- Node versão LTS ou mais;
+- Node versão LTS (ou maior) instalado;
+
+---
 
 ## Utilizado
 
 - React com Typescript
 - Next.js
+- Eslint
+- js-cookie (utilizado para facilitar a utilização de cookies na aplicação)
+
+---
+
+## Executar aplicação localmente
+
+1. Clonar esse repositório
+2. Abrir o terminal com o caminho da pasta clonada
+3. Executar o comando `npm install`
+4. Esperar a instalação e então executar `npm run dev`
+5. Acessar no navegador o link http://localhost:3000
+
+---
 
 ## Dia 01
 
@@ -25,6 +41,8 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um determinado 
 - Desenvolvido:
   - barra de xp do layout
   - CSS com variáveis globais na `:root`
+
+---
 
 ## Dia 02
 
@@ -53,6 +71,8 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um determinado 
 
   - Criado componente Countdown, Profile e CompletedChallenges
 
+---
+
 ## Dia 03
 
 - Visto:
@@ -73,6 +93,8 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um determinado 
   - Regras de negócio para aparecer os desafios e xp de usuários;
   - utilizado o `useContext` para gerenciar os estados entre os componentes;
 
+---
+
 ## Dia 04
 
 - Visto:
@@ -86,6 +108,8 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um determinado 
 
 - Feito:
   - Separado a lógica do Countdown para criar um novo context, pois algumas das informações dele eram necessárias no ChallengeBox
+
+---
 
 ## Dia 05
 
@@ -112,7 +136,7 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um determinado 
 
 - Feito:
 
-  - instalado a dependencia js-cookie para facilitar a manipulação dos cookies da aplicação.
+  - instalado a dependência *js-cookie* para facilitar a manipulação dos cookies da aplicação.
   - Utilizado o GetServerSideProps para pegar os cookies da página e renderizar elas quando atualizar a página.
   - Realizado o Deploy da aplicação na Vercel com a CLI.
     - os passos foram: 
