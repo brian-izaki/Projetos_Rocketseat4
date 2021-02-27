@@ -1,14 +1,17 @@
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import { CompletedChallenges } from '../components/CompletedChallenges';
-import { Countdown } from '../components/Countdown';
-import { ExperienceBar } from '../components/ExperienceBar';
-import { Profile } from '../components/Profile';
 
 import styles from '../styles/pages/Home.module.css';
+
+import { ExperienceBar } from '../components/ExperienceBar';
 import { ChallengeBox } from '../components/ChallengeBox';
-import { CountdownProvider } from '../contexts/CountdownContext';
+import { Countdown } from '../components/Countdown';
+import { CompletedChallenges } from '../components/CompletedChallenges';
+import { Profile } from '../components/Profile';
+
 import { ChallengesProvider } from '../contexts/ChallengesContext';
+import { CountdownProvider } from '../contexts/CountdownContext';
+import { MenuBar } from '../components/MenuBar';
 
 interface ChallengeProps {
   level: number;
@@ -27,10 +30,13 @@ export default function Home({
       currentExperience={currentExperience}
       challengesCompleted={challengesCompleted}
     >
+      <Head>
+        <title>Início | move.it</title>
+      </Head>
       <div className={styles.container}>
-        <Head>
-          <title>Início | move.it</title>
-        </Head>
+
+        <MenuBar actualPage="home" />
+
         <ExperienceBar />
 
         <CountdownProvider>
