@@ -8,6 +8,7 @@ import {
 import { ChallengesContext } from './ChallengesContext';
 
 interface CountdownContextData {
+  INITIAL_TIME: number;
   minutes: number;
   seconds: number;
   hasFinish: boolean;
@@ -63,6 +64,7 @@ export function CountdownProvider({ children }: CountdownProvider): JSX.Element 
   return (
     <CountdownContext.Provider
       value={{
+        INITIAL_TIME,
         minutes,
         seconds,
         hasFinish,
