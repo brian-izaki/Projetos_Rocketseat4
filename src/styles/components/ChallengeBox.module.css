@@ -1,10 +1,10 @@
+/* Container */
 .challengeBoxContainer {
   height: 100%;
 
   background-color: var(--white);
   border-radius: 5px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem 2rem;
 
   display: flex;
   flex-direction: column;
@@ -14,6 +14,7 @@
   text-align: center;
 }
 
+/* Not active */
 .challengeNotActive{
   display: flex;
   flex-direction: column;
@@ -39,14 +40,20 @@
   margin-bottom: 1rem;
 }
 
+/* Active */
 .challengeActive {
   height: 100%;
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.challengeActive header {
+.challengeDescription {
+  padding: 1.5rem 2rem;
+}
+
+.challengeActive .challengeDescription header {
   color: var(--blue);
   font-weight: 600;
   font-size: 1.25rem;
@@ -54,7 +61,7 @@
   border-bottom: 1px solid var(-gray-line);
 }
 
-.challengeActive main {
+.challengeActive .challengeDescription main {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -62,47 +69,54 @@
   justify-content: center;
 }
 
-.challengeActive main strong {
+.challengeActive .challengeDescription main strong {
   font-size: 2rem;
   font-weight: 600;
   color: var(--title);
   margin: 1.5rem 0 1rem;
 }
 
-.challengeActive main p {
+.challengeActive .challengeDescription main p {
   line-height: 1.5;
 }
 
+/* Buttons */
 .challengeActive footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
 }
 
 .challengeActive footer button {
-  height: 3rem;
+  height: 5rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   border: 0;
-  border-radius: 5px;
 
   color: var(--white);
 
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 600;
 
   transition: filter 0.2s;
 }
 
 .challengeActive footer button.challengeFailedButton {
-  background-color: var(--red);
+  color: var(--red);
+  background-color: #FFF5F5;
+  border-width: 1px 0.5px 0 0;
+  border-style: solid;
+  border-color: var(--gray-line);
 }
 
 .challengeActive footer button.challengeSuccessedButton {
-  background-color: var(--green);
+  color: var(--green);
+  background-color: #F7FFF5;
+  border-width: 1px 0 0 0.5px;
+  border-style: solid;
+  border-color: var(--gray-line);
 }
 
 .challengeActive footer button:hover {

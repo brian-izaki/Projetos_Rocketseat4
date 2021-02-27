@@ -21,22 +21,24 @@ export function ChallengeBox(): JSX.Element {
     <div className={styles.challengeBoxContainer}>
       {activeChallenge ? (
         <div className={styles.challengeActive}>
-          <header>
-            Ganhe
-            {activeChallenge.amount}
-            {' '}
-            xp
-          </header>
+          <div className={styles.challengeDescription}>
+            <header>
+              Ganhe
+              {activeChallenge.amount}
+              {' '}
+              xp
+            </header>
 
-          <main>
-            <img src={`icons/${activeChallenge.type}.svg`} alt="" />
-            <strong>Novo Desafio</strong>
-            <p>
-              {' '}
-              {activeChallenge.description}
-              {' '}
-            </p>
-          </main>
+            <main>
+              <img src={`icons/${activeChallenge.type}.svg`} alt="" />
+              <strong>Novo Desafio</strong>
+              <p>
+                {' '}
+                {activeChallenge.description}
+                {' '}
+              </p>
+            </main>
+          </div>
 
           <footer>
             <button
