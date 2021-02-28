@@ -5,12 +5,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  value, ...props
+  value, children, ...props
 }: ButtonProps) => (
   <button
     type="button"
     {...props}
   >
-    {value}
+    {value || children}
   </button>
 );
