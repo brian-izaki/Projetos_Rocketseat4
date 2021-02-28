@@ -33,9 +33,10 @@ export default function Home({
       <Head>
         <title>Início | move.it</title>
       </Head>
-      <div className={styles.container}>
 
-        <MenuBar actualPage="home" />
+      <MenuBar actualPage="home" />
+
+      <div className={styles.container}>
 
         <ExperienceBar />
 
