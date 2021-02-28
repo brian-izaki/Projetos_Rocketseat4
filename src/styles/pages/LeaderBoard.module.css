@@ -1,0 +1,62 @@
+.leaderBoardContainer {
+  margin: 0px auto;
+  max-width: 920px;
+  padding: 30px 20px 20px;
+  
+  display: flex;
+  flex-direction: column;
+  
+  height: 100vh;
+}
+
+.leaderBoardContainer h1 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--title);
+}
+
+.leaderBoardTable {
+  padding-top: 40px;
+
+  width: 100%;
+
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+
+.leaderBoardTable thead th{
+  padding-bottom: calc(1.5rem - 15px);
+}
+
+.leaderBoardTable thead tr th {
+  color: var(--text);
+
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.leaderBoardTable tbody tr + tr {
+  margin-top: 10px;
+}
+
+.leaderBoardTable tbody td {
+  padding: 0.5rem 0;
+  background-color: var(--white);
+}
+
+.leaderBoardTable tbody tr td:first-child {
+  width: 10%;
+
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+
+  border-right: 5px solid var(--background);
+  border-radius: 5px 0 0 5px;
+}
+
+.leaderBoardTable tbody tr td:last-child {
+  border-radius: 0 5px 5px 0;
+}
