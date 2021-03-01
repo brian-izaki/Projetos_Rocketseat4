@@ -74,7 +74,6 @@ export default function LeaderBoard({
 
             <tbody>
               <UserTableCard position={1} completedChallenges={123} experience={12345} />
-              <UserTableCard position={2} completedChallenges={666} experience={55555} />
             </tbody>
           </table>
         </div>
