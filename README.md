@@ -2,7 +2,7 @@
 
 Desenvolvido uma aplicação com a temática da técnica Pomodoro para melhorar a concentração e realizar alongamentos enquanto fica na frente do computador. Nele foi utilizado uma estratégia de gamificação na qual o usuário obtém pontos ao realizar tarefas que se apresentam quando é o momento de descanso.
 
-_obs: a técnica Pomodoro consiste em se focar em uma tarefa por um determinado tempo e então ter um intervalo para descansar e depois voltar para a tarefa com menos tempo, e ficar nesse loop._
+_obs: a técnica Pomodoro consiste em se focar em uma tarefa por um 25min(chamado de pomodoro) e então ter um intervalo de 5min para descansar e depois voltar para a tarefa com o mesmo tempo, a cada 4 ou 5 pomodoros pode ter um descanso de 30min e depois iniciar um novo ciclo._
 
 ---
 
