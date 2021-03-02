@@ -1,72 +1,98 @@
+/* eslint-disable camelcase */
+import axios from 'axios';
 import Head from 'next/head';
-import { GetServerSideProps } from 'next';
+import { FormEvent, useState } from 'react';
+import { Button } from '../components/Button';
+import styles from '../styles/pages/Login.module.css';
 
-import styles from '../styles/pages/Home.module.css';
+export default function Login(): JSX.Element {
+  const [username, setUsername] = useState('');
 
-import { ExperienceBar } from '../components/ExperienceBar';
-import { ChallengeBox } from '../components/ChallengeBox';
-import { Countdown } from '../components/Countdown';
-import { CompletedChallenges } from '../components/CompletedChallenges';
-import { Profile } from '../components/Profile';
+  function handleUsername(e) {
+    setUsername(e.target.value);
+  }
 
-import { ChallengesProvider } from '../contexts/ChallengesContext';
-import { CountdownProvider } from '../contexts/CountdownContext';
-import { MenuBar } from '../components/MenuBar';
+  function saveSession(userSession) {
+    const { login, avatar_url, name } = userSession.data;
+    const userInfo = {
+      login,
+      avatarUrl: avatar_url,
+      name,
+    };
+    sessionStorage.setItem('userSession', JSON.stringify(userInfo));
+  }
 
-interface ChallengeProps {
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-}
+  function handleSubmitForm(e: FormEvent) {
+    e.preventDefault();
 
-export default function Home({
-  level,
-  currentExperience,
-  challengesCompleted,
-}: ChallengeProps): JSX.Element {
+    axios.get(`https://api.github.com/users/${username}`)
+      .then((value) => {
+        if (value.status === 404) {
+          window.location.href = '/';
+        }
+        saveSession(value);
+
+        window.location.href = '/authenticated';
+      });
+  }
+
   return (
-    <ChallengesProvider
-      level={level}
-      currentExperience={currentExperience}
-      challengesCompleted={challengesCompleted}
-    >
+    <>
       <Head>
-        <title>Início | move.it</title>
+        <title>Login | moveit</title>
       </Head>
 
-      <MenuBar actualPage="home" />
+      <div className={styles.loginContainer}>
+        <div className={styles.logo}>
+          <img src="/logo-giant.svg" alt="Logo do moveit" />
+        </div>
 
-      <div className={styles.container}>
+        <div className={styles.textContainer}>
+          <div />
 
-        <ExperienceBar />
+          <div className={styles.logo}>
+            <img
+              src="/logo-full.svg"
+              alt="logo do moveit com o nome moveit escrito"
+            />
+          </div>
 
-        <CountdownProvider>
-          <section>
+          <section className={styles.submitContainer}>
+            <h1>Bem-vindo</h1>
+
             <div>
-              <Profile />
-              <CompletedChallenges />
-              <Countdown />
+              <div>
+                <img src="/icons/github.svg" alt="logo do gitghub" />
+              </div>
+              <p>Faça login com seu Github para começar</p>
+              <div />
             </div>
 
-            <div>
-              <ChallengeBox />
-            </div>
+            <form onSubmit={handleSubmitForm}>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Digite seu username"
+                  name="username"
+                  value={username}
+                  title="Digite seu username"
+                  onChange={handleUsername}
+                />
+                <Button
+                  style={{ backgroundColor: 'var(--green)' }}
+                  value=""
+                  type="submit"
+                >
+                  <img src="/icons/arrow-right.svg" alt="Seta para continuar" />
+                </Button>
+              </div>
+            </form>
           </section>
-        </CountdownProvider>
+
+          <div />
+          <div />
+        </div>
       </div>
-    </ChallengesProvider>
+    </>
   );
 }
-
-// tudo dentro daqui será executado apenas no servidor
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
-
-  return {
-    props: {
-      level: Number(level) || 0,
-      currentExperience: Number(currentExperience) || 0,
-      challengesCompleted: Number(challengesCompleted) || 0,
-    },
-  };
-};

@@ -143,3 +143,23 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um 25min(chamad
       - instalação da CLI `npm i -g vercel`
       - login com `vercel login`
       - deploy com `vecel` (teve confirmação de perguntas durante a execução)
+
+---
+
+## Desafios
+
+- [x] deixar responsivo
+- [x] seguir o layout do [Figma 2.0 do Tiago Luchtenberg](https://www.figma.com/file/WPOPVXfc1UWXYpV6P6URDT/Move.it-2.0-Copy?node-id=160%3A2761)
+- [ ] implementar o acesso com login no github
+- [ ] listar os usuários na página de Leaderboard
+
+---
+
+### Anotações
+
+- Seguido o [code drops](https://www.youtube.com/watch?v=Cz55Jmhfw84) da rocketseat sobre o serverless
+  - O Next tem permite criar uma pequena api em node quando a rota da API for chamada ele executa, após a execução o processo em node para. 
+  - Existe um termo para essa API no Next, Serverless function
+  - Outros termos: [Hot start e Cold start](https://medium.com/@danielmanchev/cold-warm-and-hot-start-in-aws-lambda-bc8d64f28575). Em resumo:
+    - cold start: é o momento da execução daquel função, e ele para após o termino do seu processo.
+    - hot start: uma ligação entre as funções lambda que se ativa ao receber requisições e que se desliga após um bom tempo não recebendo requisições.

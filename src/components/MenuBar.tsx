@@ -15,7 +15,7 @@ export function MenuBar({ actualPage }: MenuBarProps): JSX.Element {
 
       <section>
 
-        <Link href="/">
+        <Link href="/authenticated">
           {actualPage === 'home'
             ? (
               <span className={styles.activePage}>
@@ -30,7 +30,7 @@ export function MenuBar({ actualPage }: MenuBarProps): JSX.Element {
             )}
         </Link>
 
-        <Link href="/leaderboard">
+        <Link href="/authenticated/leaderboard">
           {actualPage === 'leaderboard'
             ? (
               <span className={styles.activePage}>
