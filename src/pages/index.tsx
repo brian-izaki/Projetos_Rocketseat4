@@ -29,10 +29,13 @@ export default function Login(): JSX.Element {
       .then((value) => {
         if (value.status === 404) {
           window.location.href = '/';
+          return;
         }
         saveSession(value);
 
         window.location.href = '/authenticated';
+      }).catch((err) => {
+        window.location.href = '/';
       });
   }
 
