@@ -59,7 +59,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       break;
     }
     case 'GET': {
-      const listUsers = await collection.find({}).toArray();
+      const listUsers = await collection.find({})
+        .sort({ completedChallenges: -1 })
+        .toArray();
       return res.status(200).json({ users: listUsers });
       break;
     }
