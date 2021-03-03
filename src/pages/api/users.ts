@@ -27,10 +27,17 @@ async function connectToDatabase(uri: string) {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { login, avatarUrl, name } = req.body;
+  const {
+    login,
+    avatarUrl,
+    name,
+    level,
+    completedChallenges,
+    experience,
+  } = req.body;
   const { method } = req;
-  const db = await connectToDatabase(process.env.MONGO_URI);
 
+  const db = await connectToDatabase(process.env.MONGO_URI);
   const collection = db.collection('users');
 
   const existedUser = await collection.findOne({ login });
@@ -54,6 +61,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     case 'GET': {
       const listUsers = await collection.find({}).toArray();
       return res.status(200).json({ users: listUsers });
+      break;
+    }
+    case 'PUT': {
+      await collection.updateOne({ login }, {
+        $set: {
+          level,
+          completedChallenges,
+          experience,
+        },
+      });
+      return res.status(200).json({ put: 'alterado' });
       break;
     }
     default:

@@ -1,9 +1,11 @@
 import {
-  createContext, useState, ReactNode, useEffect,
+  createContext, useState, ReactNode, useEffect, useContext,
 } from 'react';
 import Cookies from 'js-cookie';
+import axios from 'axios';
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/LevelUpModal';
+import { UserContext } from './UserContext';
 
 interface Challenge {
   type: 'body' | 'eye';
@@ -38,6 +40,8 @@ export function ChallengesProvider({
   children,
   ...rest
 }: ChallengesProviderProps): JSX.Element {
+  const { login } = useContext(UserContext);
+
   const [level, setLevel] = useState(rest.level ?? 1);
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
@@ -60,7 +64,10 @@ export function ChallengesProvider({
     Cookies.set('level', String(level));
     Cookies.set('currentExperience', String(currentExperience));
     Cookies.set('challengesCompleted', String(challengesCompleted));
-  }, [level, currentExperience, challengesCompleted]);
+    axios.put('/api/users', {
+      login, level, experience: currentExperience, completedChallenges: challengesCompleted,
+    });
+  }, [level, currentExperience, challengesCompleted, login]);
 
   function levelUp() {
     setLevel(level + 1);
