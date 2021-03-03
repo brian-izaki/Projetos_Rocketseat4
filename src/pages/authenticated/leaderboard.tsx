@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
 import { MenuBar } from '../../components/MenuBar';
 import { Profile } from '../../components/Profile';
 import styles from '../../styles/pages/LeaderBoard.module.css';
@@ -12,6 +12,22 @@ interface UserCardTable {
   experience: number;
   nameProps: string;
   avatarUrlProps: string;
+  levelProps: number;
+}
+
+interface UserData {
+  _id: number;
+  login: string;
+  name: string;
+  avatarUrl: string;
+  level: number;
+  completedChallenges: number;
+  experience: number;
+  registeredAt: DateConstructor;
+}
+
+interface LeaderboardProps {
+  userList: Array<UserData>;
 }
 
 const UserTableCard: React.FC<UserCardTable> = ({
@@ -20,13 +36,14 @@ const UserTableCard: React.FC<UserCardTable> = ({
   experience,
   nameProps,
   avatarUrlProps,
+  levelProps,
 }: UserCardTable) => (
   <tr>
     <td>{position}</td>
 
     <td>
       <div>
-        <Profile nameProp={nameProps} avatarUrlProp={avatarUrlProps} />
+        <Profile nameProp={nameProps} avatarUrlProp={avatarUrlProps} levelProp={levelProps} />
       </div>
     </td>
 
@@ -42,16 +59,7 @@ const UserTableCard: React.FC<UserCardTable> = ({
   </tr>
 );
 
-export default function LeaderBoard(): JSX.Element {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    axios.get('/api/users')
-      .then((usersRes) => {
-        setUsers(usersRes.data.users);
-      });
-  }, []);
-
+export default function LeaderBoard({ userList }: LeaderboardProps): JSX.Element {
   return (
     <>
       <Head>
@@ -73,14 +81,15 @@ export default function LeaderBoard(): JSX.Element {
           </thead>
 
           <tbody>
-            {users.map((user, userIndex) => (
+            {userList.map((user, userIndex) => (
               <UserTableCard
-                key={user._id}
-                position={userIndex}
+                key={user.login}
+                position={userIndex + 1}
                 completedChallenges={user.completedChallenges}
                 experience={user.experience}
                 nameProps={user.name}
                 avatarUrlProps={user.avatarUrl}
+                levelProps={user.level}
               />
             ))}
           </tbody>
@@ -89,3 +98,14 @@ export default function LeaderBoard(): JSX.Element {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const userList = await axios.get(`http://${ctx.req.headers.host}/api/users`)
+    .then((usersRes) => usersRes.data.users);
+
+  return {
+    props: {
+      userList,
+    },
+  };
+};

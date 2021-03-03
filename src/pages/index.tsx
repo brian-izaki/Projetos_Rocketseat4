@@ -34,7 +34,7 @@ export default function Login(): JSX.Element {
         saveSession(value);
 
         window.location.href = '/authenticated';
-      }).catch((err) => {
+      }).catch(() => {
         window.location.href = '/';
       });
   }

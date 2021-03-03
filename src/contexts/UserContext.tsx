@@ -23,6 +23,7 @@ export function UserProvider({ children }: UserProps): JSX.Element {
   async function loggedUser() {
     const storagedUser = JSON.parse(sessionStorage.getItem('userSession'));
 
+    // eslint-disable-next-line no-console
     await axios.post('/api/users', { ...storagedUser }).catch((err) => console.log(err));
 
     setUser(storagedUser);

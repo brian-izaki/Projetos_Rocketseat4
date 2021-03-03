@@ -7,13 +7,14 @@ import styles from '../styles/components/Profile.module.css';
 interface ProfileProps {
   nameProp?: string;
   avatarUrlProp?: string;
+  levelProp?: number;
 }
 
-export function Profile({ nameProp, avatarUrlProp }: ProfileProps): JSX.Element {
+export function Profile({ nameProp, avatarUrlProp, levelProp }: ProfileProps): JSX.Element {
   const { level } = useContext(ChallengesContext);
   const { avatarUrl, name } = useContext(UserContext);
 
-  const image = avatarUrl || avatarUrlProp || '../icons/anonymous.png';
+  const image = avatarUrlProp || avatarUrl || '../icons/anonymous.png';
 
   return (
     <div className={styles.profileContainer}>
@@ -21,14 +22,14 @@ export function Profile({ nameProp, avatarUrlProp }: ProfileProps): JSX.Element 
       <div>
         <strong>
           {' '}
-          {name || nameProp || 'user anônimo'}
+          {nameProp || name || 'user anônimo'}
           {' '}
         </strong>
         <p>
           <img src="../icons/level.svg" alt="icon de Level" />
           Level
           {' '}
-          {level}
+          { levelProp || level}
         </p>
       </div>
     </div>
