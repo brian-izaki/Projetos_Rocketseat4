@@ -57,6 +57,15 @@ export function ChallengesProvider({
 
   useEffect(() => {
     Notification.requestPermission();
+
+    const username = JSON.parse(sessionStorage.getItem('userSession')).login;
+
+    axios.get(`/api/challenges?login=${username}`).then((success) => {
+      const { data } = success;
+      setLevel(data.level);
+      setCurrentExperience(data.experience);
+      setChallengesCompleted(data.completedChallenges);
+    });
   }, []);
 
   // definição de cookies da aplicação
