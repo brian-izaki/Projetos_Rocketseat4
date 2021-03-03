@@ -8,12 +8,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const db = await connectToDatabase(process.env.MONGO_URI);
   const collection = db.collection('users');
 
+  const user = await collection.findOne({ login })
+    .catch((err) => console.log(err));
+
+  const defaultValue = {
+    level: 1,
+    experience: 0,
+    completedChallenges: 0,
+  };
+
   const {
     level,
     experience,
     completedChallenges,
-  } = await collection.findOne({ login })
-    .catch((err) => console.log(err));
+  } = user || defaultValue;
 
   return res.status(200).json({ level, experience, completedChallenges });
 };
