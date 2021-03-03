@@ -5,6 +5,20 @@ Desenvolvido uma aplicação com a temática da técnica Pomodoro para melhorar 
 _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um 25min(chamado de pomodoro) e então ter um intervalo de 5min para descansar e depois voltar para a tarefa com o mesmo tempo, a cada 4 ou 5 pomodoros pode ter um descanso de 30min e depois iniciar um novo ciclo._
 
 ---
+## Screenshots
+
+<img src="./public/pagina-login.jpg" width='500' alt="screenshot da página de login">
+<img src="./public/pagina-home.jpg" width='500' alt="screenshot da página de home">
+<img src="https://media.giphy.com/media/d1AXpoDO9sp3YxEotq/giphy.gif" width='500' alt="screenshot da página de home">
+<br />
+<img src="./public/pagina-login-mobile.jpg" height='500' alt="screenshot da página de login">
+<img src="./public/pagina-home-mobile.jpg" height='500' alt="screenshot da página de home">
+
+*layout baseado no [Figma 2.0 do Tiago Luchtenberg](https://www.figma.com/file/WPOPVXfc1UWXYpV6P6URDT/Move.it-2.0-Copy?node-id=160%3A2761), apenas a página de login foi customizado o layout para mobile*
+
+<br />
+
+---
 
 ## Ambiente de desenvolvimento
 
