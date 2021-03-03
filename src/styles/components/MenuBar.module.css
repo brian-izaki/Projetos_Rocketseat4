@@ -64,7 +64,7 @@
 
 @media(max-width: 900px) {
   .menuBarContainer {
-    height: 100px;
+    height: 80px;
     width: 100vw;
     padding-left: 2rem;
     padding-top: 0;

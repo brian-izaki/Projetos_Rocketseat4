@@ -66,6 +66,10 @@
 }
 
 @media(max-width: 900px) {
+  .leaderBoardTable {
+    padding-bottom: 80px;
+  }
+
   .leaderBoardTable thead tr th{
     text-align: center;
   }
