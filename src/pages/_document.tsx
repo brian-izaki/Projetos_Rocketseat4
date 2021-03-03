@@ -7,6 +7,15 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta property="og:image" content="/favicon.png" />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:width" content="800" />
+          <meta property="og:image:height" content="600" />
+
+          <meta
+            property="description"
+            content="Técnica Pomodoro para aumentar produtividade com desafios durante os descansos."
+          />
           <link rel="shortcut icon" href="favicon.png" type="image/png" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link

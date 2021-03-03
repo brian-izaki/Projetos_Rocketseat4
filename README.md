@@ -18,6 +18,7 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um 25min(chamad
 - Next.js
 - Eslint
 - js-cookie (utilizado para facilitar a utilização de cookies na aplicação)
+- mongoDB (para armazenar os usuários que se logaram e mostrar na leaderboard)
 
 ---
 
@@ -150,8 +151,8 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um 25min(chamad
 
 - [x] deixar responsivo
 - [x] seguir o layout do [Figma 2.0 do Tiago Luchtenberg](https://www.figma.com/file/WPOPVXfc1UWXYpV6P6URDT/Move.it-2.0-Copy?node-id=160%3A2761)
-- [ ] implementar o acesso com login no github
-- [ ] listar os usuários na página de Leaderboard
+- [x] para logar está sendo utilizado um username do github (os dados são armazenados no mongoDb)
+- [x] listar os usuários na página de Leaderboard
 
 ---
 
@@ -163,3 +164,11 @@ _obs: a técnica Pomodoro consiste em se focar em uma tarefa por um 25min(chamad
   - Outros termos: [Hot start e Cold start](https://medium.com/@danielmanchev/cold-warm-and-hot-start-in-aws-lambda-bc8d64f28575). Em resumo:
     - cold start: é o momento da execução daquel função, e ele para após o termino do seu processo.
     - hot start: uma ligação entre as funções lambda que se ativa ao receber requisições e que se desliga após um bom tempo não recebendo requisições.
+
+- Feito login de sessão de um usuário utilizando o sessionStorage do navegador (src/pages/index.tsx), o username, name e avatarUrl são pegos da API github.
+
+- Na api de users tem cadastro do usuário que acabou de logar, listagens de usuários e alteraões das challenges (level, xp, e desafios completados)
+
+- Para armazenar os dados de usuários, está sendo utilizado o mongoDB.
+
+- Para gerenciar os estados do usuário foi criado a src/context/UserContext.tsx. O provider dele foi utilizado na _app.tsx
