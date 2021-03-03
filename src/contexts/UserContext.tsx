@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { createContext, ReactNode, useState } from 'react';
 
 interface UserProps {
@@ -19,9 +20,11 @@ export const UserContext = createContext({} as UserContextProps);
 export function UserProvider({ children }: UserProps): JSX.Element {
   const [user, setUser] = useState({} as UserSession);
 
-  function loggedUser() {
+  async function loggedUser() {
     const storagedUser = JSON.parse(sessionStorage.getItem('userSession'));
-    console.log(storagedUser);
+
+    await axios.post('/api/users', { ...storagedUser }).catch((err) => console.log(err));
+
     setUser(storagedUser);
   }
 
