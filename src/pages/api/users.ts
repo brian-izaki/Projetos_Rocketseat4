@@ -28,19 +28,36 @@ async function connectToDatabase(uri: string) {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { login, avatarUrl, name } = req.body;
+  const { method } = req;
   const db = await connectToDatabase(process.env.MONGO_URI);
 
   const collection = db.collection('users');
 
-  await collection.insertOne({
-    login,
-    name,
-    avatarUrl,
-    level: 1,
-    completedChallenges: 0,
-    experience: 0,
-    registeredAt: new Date(),
-  });
+  const existedUser = await collection.findOne({ login });
 
-  return res.status(201).json({ status: 'ok' });
+  switch (method) {
+    case 'POST': {
+      if (!existedUser) {
+        await collection.insertOne({
+          login,
+          name,
+          avatarUrl,
+          level: 1,
+          completedChallenges: 0,
+          experience: 0,
+          registeredAt: new Date(),
+        });
+      }
+      return res.status(201).json({ status: 'ok' });
+      break;
+    }
+    case 'GET': {
+      const listUsers = await collection.find({}).toArray();
+      return res.status(200).json({ users: listUsers });
+      break;
+    }
+    default:
+      res.setHeader('Allow', ['GET', 'PUT']);
+      return res.status(405).end(`Method ${method} Not Allowed`);
+  }
 };
